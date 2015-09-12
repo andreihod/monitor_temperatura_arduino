@@ -1,0 +1,28 @@
+{
+  "name": "monitor_temperatura_arduino",
+  "version": "0.0.1",
+  "description": "Monitor de temperatura pela internet usando Arduino e Firebase",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "~2.2.9",
+    "johnny-five": "~0.8.91"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andreihod/monitor_temperatura_arduino"
+  },
+  "keywords": [
+    "arduino",
+    "firebase"
+  ],
+  "author": "Andrei Hodecker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreihod/monitor_temperatura_arduino/issues"
+  },
+  "homepage": "https://github.com/andreihod/monitor_temperatura_arduino"
+}

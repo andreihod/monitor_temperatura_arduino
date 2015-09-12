@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Monitor de Temperatura</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/chartist/dist/chartist.min.css">
+  </head>
+  <body ng-app="monitor">
+
+    <h2>Monitor de Temperatura</h2>
+
+    <div ng-controller="MonitorCtrl">
+      
+      <div class="ct-chart ct-perfect-fourth"></div>
+
+    </div>
+
+    <!-- AngularJS -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+    <!-- Chartist -->
+    <script src="bower_components/chartist/dist/chartist.min.js"></script>
+
+    <script type="text/javascript">
+
+      angular.module("monitor", ["firebase"])
+
+      .controller("MonitorCtrl", function($scope, $firebaseArray) {
+
+        $scope.temperaturas = {labels:[], series:[]};
+
+        var ref = new Firebase('https://medidortemperatura.firebaseio.com/logger')
+                  .orderByChild('time')
+                  .limitToLast(25);
+
+        $scope.logs = $firebaseArray(ref);
+
+        $scope.logs.$loaded().then(function(){         
+          $scope.loadTemperatures();
+          $scope.logs.$watch(function(event) {
+            $scope.loadTemperatures();
+          });
+        });
+
+        $scope.loadTemperatures = function(){
+
+          $scope.temperaturas = {};
+          $scope.temperaturas.labels = [];
+          $scope.temperaturas.series = [];
+          var series = [];
+
+          for(var i = 0; i < $scope.logs.length; i++){
+            var t = $scope.logs[i];
+            var hora = new Date();
+            hora.setTime(t.time);
+            $scope.temperaturas.labels.push(hora.toLocaleTimeString());
+            series.push(t.celsius);
+          }
+
+          $scope.temperaturas.series.push(series);
+          new Chartist.Line('.ct-chart', $scope.temperaturas, {height:500, high:40, low:-10});
+        }
+
+      });
+
+    </script>
+
+  </body>
+</html>
