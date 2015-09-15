@@ -10,7 +10,8 @@ Monitor de temperatura pela internet usando Arduino e Firebase.
 3. Execute `node index` para iniciar o monitoramento.  
 4. Hospede a pasta `/static` para visualizar o gráfico de temperatura.  
   
-# Instruções para o Arduino  
+# Instruções para o Arduino
+![arduino](http://i.imgur.com/7JvMLVX.png)
 1. [Compile StandardFirmata](https://www.arduino.cc/en/Reference/Firmata) para o arduino.  
 2. Conecte o sensor de temperatura a uma breadboard.  
   2.1 No caso do sensor LM35:  
