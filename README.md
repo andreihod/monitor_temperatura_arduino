@@ -1,7 +1,7 @@
-# monitor_temperatura_arduino
+# Real-time temperature monitoring
 Real-time temperature monitoring using Arduino and Firebase
 
-[Demo](https://medidortemperatura.firebaseapp.com/)
+[Demo](https://medidortemperatura.firebaseapp.com/)  
   
 # Instructions  
   
@@ -10,7 +10,7 @@ Real-time temperature monitoring using Arduino and Firebase
 3. Execute `node index` to start.  
 4. Host the `/static` folder to watch the temperature.  
   
-# Instruction (Arduino)  
+# Instructions (Arduino)  
 ![arduino](http://i.imgur.com/7JvMLVX.png)  
 1. [Compile StandardFirmata](https://www.arduino.cc/en/Reference/Firmata) in your arduino.  
 2. Plug the temperature sensor in the breadboard.  
